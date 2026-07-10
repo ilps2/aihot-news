@@ -107,13 +107,13 @@ var currentTab = 'hot';
 var activeTag = null;
 var activeSource = null;
 
-function filterSource(src) {{
+function filterSource(src) {
   event.stopPropagation();
   switchTab('all');
   activeSource = src;
   activeTag = null;
   renderContent();
-}}
+}
 
 // ---- Theme ----
 var isDark = true;
