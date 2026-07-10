@@ -54,7 +54,7 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
 .mobile-tab{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;font-size:10px;color:var(--nav-text);cursor:pointer;border:none;background:none;border-radius:8px;transition:all .15s;min-width:56px}
 .mobile-tab.active{color:var(--active)}
 .mobile-tab .m-icon{font-size:18px}
-@media(max-width:768px){.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:12px 12px 80px 12px}.mobile-tabs{display:flex}.card{padding:12px}.card h3{font-size:14px}}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:12px 12px 80px 12px}.mobile-tabs{display:flex}.mobile-utils{display:block!important}.card{padding:12px}.card h3{font-size:14px}}
 </style>
 </head>
 <body>
@@ -86,6 +86,10 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSy
     </div>
     <div class="tag-filter" id="tagFilter" style="display:none"></div>
     <div id="content"></div>
+    <div class="mobile-utils" style="display:none;text-align:center;padding:16px 0;border-top:1px solid var(--card-border);margin-top:12px">
+      <button onclick="toggleTheme()" id="mThemeBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px">🌙 暗黑</button>
+      <button onclick="toggleLang()" id="mLangBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px">🌐 English</button>
+    </div>
     <div style="text-align:center;padding:40px;color:var(--text3);font-size:12px">AI 热榜 · 点击标题跳转原文 · 标签由 DeepSeek 生成</div>
   </main>
 </div>
@@ -117,11 +121,13 @@ function toggleTheme() {
   isDark = !isDark;
   document.body.classList.toggle('light', !isDark);
   document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
+  var mb = document.getElementById('mThemeBtn'); if(mb) mb.textContent = isDark ? '🌙 暗黑' : '☀️ 亮色';
   localStorage.setItem('aihot_theme', isDark ? 'dark' : 'light');
 }
 function toggleLang() {
   isCN = !isCN;
   document.getElementById('langBtn').textContent = isCN ? 'EN' : 'CN';
+  var mlb = document.getElementById('mLangBtn'); if(mlb) mlb.textContent = isCN ? '🌐 English' : '🌐 中文';
   localStorage.setItem('aihot_lang', isCN ? 'cn' : 'en');
   renderContent();
 }
