@@ -55,7 +55,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 .main-header{margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .main-header h2{font-size:18px;font-weight:700}
 .main-header .stats{font-size:12px;color:var(--text3)}
-.tag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tag-filter{display:flex;gap:6px;flex-wrap:wrap}
 .tag-filter .tf-tag{font-size:11px;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:3px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
 .tag-filter .tf-tag.active,.tag-filter .tf-tag:hover{background:#6366f122;border-color:var(--active);color:var(--active)}
 .card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px;margin-bottom:10px;transition:none}
@@ -227,7 +227,10 @@ function renderContent() {
     title = '📋 全部新闻';
     subtitle = articles.length + ' 篇文章 · ' + (new Set(articles.map(function(n){return n.source}))).size + ' 个来源';
     buildTagFilter(articles);
-    tagFilter.style.display = 'flex';
+    // Only show tag filter if buildTagFilter didn't hide it
+    if (document.getElementById('tagFilter').children.length > 0) {
+      tagFilter.style.display = 'flex';
+    }
     if (activeSource) {
       articles = articles.filter(function(n){ return n.source === activeSource; });
       subtitle = articles.length + ' 篇 · 来源: ' + activeSource + ' <span style="color:var(--active);font-size:11px;cursor:pointer;margin-left:8px" onclick="activeSource=null;renderContent()">✕ 清除</span>';
