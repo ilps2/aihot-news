@@ -18,7 +18,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0f;--card:#14141f;--card-border:#1e1e32;--text:#e0e0e0;--text2:#999;--text3:#555;--nav-bg:#14141f;--nav-border:#2a2a4a;--nav-text:#888;--sidebar-bg:#0d0d14;--active:#6366f1}
 .light{--bg:#f5f5f7;--card:#ffffff;--card-border:#e5e5ea;--text:#1d1d1f;--text2:#666;--text3:#999;--nav-bg:#f0f0f2;--nav-border:#d1d1d6;--nav-text:#555;--sidebar-bg:#eeeef0;--active:#6366f1}body.light{background:#f5f5f7;color:#1d1d1f}.light .card{background:#fff;border-color:#e5e5ea}.light .card h3,.light .card h3 a{color:#1d1d1f}.light .card .summary,.light .card .tag{color:#666}.light .sidebar,.light .mobile-tabs{background:#eeeef0;border-color:#d1d1d6}.light .sidebar-tab,.light .mobile-tab,.light .nav button{color:#555}.light .sidebar-tab.active,.light .mobile-tab.active{color:#6366f1}.light .main-header .stats,.light .sidebar-logo .meta{color:#999}
-body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;transition:background .3s,color .3s}
+body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;transition:none}
 .layout{display:flex;min-height:100vh}
 .sidebar{width:200px;background:var(--sidebar-bg);border-right:1px solid var(--card-border);padding:16px 0;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow-y:auto}
 .sidebar-logo{padding:0 16px 16px;border-bottom:1px solid var(--card-border);margin-bottom:8px}
@@ -29,7 +29,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 .sidebar-tab.active{background:#6366f122;color:var(--active);font-weight:600}
 .sidebar-tab .count{margin-left:auto;font-size:11px;color:var(--text3);background:var(--card);padding:1px 6px;border-radius:8px}
 .sidebar-bottom{margin-top:auto;padding:12px 16px;border-top:1px solid var(--card-border);display:flex;gap:6px}
-.sidebar-bottom button{background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:4px 10px;border-radius:12px;cursor:pointer;font-size:11px;transition:all .2s}
+.sidebar-bottom button{background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:4px 10px;border-radius:12px;cursor:pointer;font-size:11px;transition:none}
 .sidebar-bottom button:hover{background:#6366f122;border-color:var(--active)}
 .main{margin-left:200px;flex:1;padding:20px 24px;max-width:calc(100% - 200px)}
 .main-header{margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -38,7 +38,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 .tag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
 .tag-filter .tf-tag{font-size:11px;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:3px 10px;border-radius:12px;cursor:pointer;transition:all .15s}
 .tag-filter .tf-tag.active,.tag-filter .tf-tag:hover{background:#6366f122;border-color:var(--active);color:var(--active)}
-.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px;margin-bottom:10px;transition:all .2s}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px;margin-bottom:10px;transition:none}
 .card:hover{border-color:var(--active)}
 .card .source{font-size:11px;color:var(--active);letter-spacing:0.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .card .source .badge{background:#6366f122;padding:2px 8px;border-radius:20px;cursor:pointer;transition:all .15s}
@@ -69,7 +69,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     <button type="button" class="sidebar-tab" onclick="switchTab('all')">📋 全部新闻</button>
     <button type="button" class="sidebar-tab" onclick="switchTab('personal')">🎯 为你推荐</button>
     <div class="sidebar-bottom">
-      <span id="themeBtn" style="display:inline-block;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:4px 10px;border-radius:12px;cursor:pointer;font-size:11px;user-select:none;-webkit-tap-highlight-color:transparent" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️';localStorage.setItem('aihot_theme','light')}">🌙</span>
+      <span id="themeBtn" style="display:inline-block;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:4px 10px;border-radius:12px;cursor:pointer;font-size:11px;user-select:none;-webkit-tap-highlight-color:transparent" ontouchend="var b=document.body;var is=b.className=='light';b.className=is?'':'light';this.textContent=is?'🌙':'☀️';localStorage.setItem('aihot_theme',is?'dark':'light');event.stopPropagation();return false" onclick="var b=document.body;var is=b.className=='light';b.className=is?'':'light';this.textContent=is?'🌙':'☀️';localStorage.setItem('aihot_theme',is?'dark':'light')">🌙</span>
       <button onclick="toggleLang()" id="langBtn">EN</button>
     </div>
   </nav>
@@ -88,7 +88,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     <div class="tag-filter" id="tagFilter" style="display:none"></div>
     <div id="content"></div>
     <div class="mobile-utils" style="text-align:center;padding:16px 0;border-top:1px solid var(--card-border);margin-top:12px">
-      <span id="mThemeBtn" style="display:inline-block;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px;user-select:none;-webkit-tap-highlight-color:transparent" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙 暗黑';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️ 亮色';localStorage.setItem('aihot_theme','light')}">🌙 暗黑</span>
+      <span id="mThemeBtn" style="display:inline-block;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px;user-select:none;-webkit-tap-highlight-color:transparent" ontouchend="var b=document.body;var is=b.className=='light';b.className=is?'':'light';this.textContent=is?'🌙 暗黑':'☀️ 亮色';localStorage.setItem('aihot_theme',is?'dark':'light');event.stopPropagation();return false">🌙 暗黑</span>
       <span id="mLangBtn" style="display:inline-block;background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px;user-select:none;-webkit-tap-highlight-color:transparent" onclick="isCN=!isCN;this.textContent=isCN?'🌐 English':'🌐 中文';var b=document.getElementById('langBtn');if(b)b.textContent=isCN?'EN':'CN';localStorage.setItem('aihot_lang',isCN?'cn':'en');renderContent()">🌐 English</span>
     </div>
     <div style="text-align:center;padding:40px;color:var(--text3);font-size:12px">AI 热榜 · 点击标题跳转原文 · 标签由 DeepSeek 生成</div>
