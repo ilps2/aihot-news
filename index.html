@@ -69,7 +69,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     <button class="sidebar-tab" onclick="switchTab('all')">📋 全部新闻</button>
     <button class="sidebar-tab" onclick="switchTab('personal')">🎯 为你推荐</button>
     <div class="sidebar-bottom">
-      <button onclick="toggleTheme()" id="themeBtn">🌙</button>
+      <button id="themeBtn" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️';localStorage.setItem('aihot_theme','light')}">🌙</button>
       <button onclick="toggleLang()" id="langBtn">EN</button>
     </div>
   </nav>
@@ -88,7 +88,7 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     <div class="tag-filter" id="tagFilter" style="display:none"></div>
     <div id="content"></div>
     <div class="mobile-utils" style="text-align:center;padding:16px 0;border-top:1px solid var(--card-border);margin-top:12px">
-      <button id="mThemeBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="var d=document.body.classList.toggle('light');var t=d?'☀️ 亮色':'🌙 暗黑';this.textContent=t;var b=document.getElementById('themeBtn');if(b)b.textContent=d?'☀️':'🌙';localStorage.setItem('aihot_theme',d?'light':'dark')">🌙 暗黑</button>
+      <button id="mThemeBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙 暗黑';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️ 亮色';localStorage.setItem('aihot_theme','light')}">🌙 暗黑</button>
       <button id="mLangBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="isCN=!isCN;this.textContent=isCN?'🌐 English':'🌐 中文';var b=document.getElementById('langBtn');if(b)b.textContent=isCN?'EN':'CN';localStorage.setItem('aihot_lang',isCN?'cn':'en');renderContent()">🌐 English</button>
     </div>
     <div style="text-align:center;padding:40px;color:var(--text3);font-size:12px">AI 热榜 · 点击标题跳转原文 · 标签由 DeepSeek 生成</div>
@@ -249,7 +249,7 @@ function cardHtml(n, showScore) {
 function esc(s) { var d=document.createElement('div');d.textContent=s||'';return d.innerHTML; }
 
 (function(){
-  if (localStorage.getItem('aihot_theme')==='light') { isDark=false; document.body.classList.add('light'); document.getElementById('themeBtn').textContent='☀️'; }
+  if (localStorage.getItem('aihot_theme')==='light') { document.body.className='light'; var tb=document.getElementById('themeBtn'); if(tb) tb.textContent='☀️'; var mb=document.getElementById('mThemeBtn'); if(mb) mb.textContent='☀️ 亮色'; }
   if (localStorage.getItem('aihot_lang')==='en') { isCN=false; document.getElementById('langBtn').textContent='CN'; }
 })();
 loadPrefs();
