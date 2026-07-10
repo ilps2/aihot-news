@@ -65,19 +65,19 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
       <h1>🤖 AI 热榜</h1>
       <div class="meta">更新于 2026-07-10 14:27 · 174篇</div>
     </div>
-    <button class="sidebar-tab active" onclick="switchTab('hot')">🔥 今日必读<span class="count">15</span></button>
-    <button class="sidebar-tab" onclick="switchTab('all')">📋 全部新闻</button>
-    <button class="sidebar-tab" onclick="switchTab('personal')">🎯 为你推荐</button>
+    <button type="button" class="sidebar-tab active" onclick="switchTab('hot')">🔥 今日必读<span class="count">15</span></button>
+    <button type="button" class="sidebar-tab" onclick="switchTab('all')">📋 全部新闻</button>
+    <button type="button" class="sidebar-tab" onclick="switchTab('personal')">🎯 为你推荐</button>
     <div class="sidebar-bottom">
-      <button id="themeBtn" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️';localStorage.setItem('aihot_theme','light')}">🌙</button>
+      <button type="button" id="themeBtn" onclick="event.preventDefault();if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️';localStorage.setItem('aihot_theme','light')};return false">🌙</button>
       <button onclick="toggleLang()" id="langBtn">EN</button>
     </div>
   </nav>
 
   <div class="mobile-tabs" id="mobileTabs">
-    <button class="mobile-tab active" onclick="switchTab('hot')"><span class="m-icon">🔥</span>必读</button>
-    <button class="mobile-tab" onclick="switchTab('all')"><span class="m-icon">📋</span>全部</button>
-    <button class="mobile-tab" onclick="switchTab('personal')"><span class="m-icon">🎯</span>推荐</button>
+    <button type="button" class="mobile-tab active" onclick="switchTab('hot')"><span class="m-icon">🔥</span>必读</button>
+    <button type="button" class="mobile-tab" onclick="switchTab('all')"><span class="m-icon">📋</span>全部</button>
+    <button type="button" class="mobile-tab" onclick="switchTab('personal')"><span class="m-icon">🎯</span>推荐</button>
   </div>
 
   <main class="main" id="main">
@@ -88,8 +88,8 @@ body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     <div class="tag-filter" id="tagFilter" style="display:none"></div>
     <div id="content"></div>
     <div class="mobile-utils" style="text-align:center;padding:16px 0;border-top:1px solid var(--card-border);margin-top:12px">
-      <button id="mThemeBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙 暗黑';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️ 亮色';localStorage.setItem('aihot_theme','light')}">🌙 暗黑</button>
-      <button id="mLangBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="isCN=!isCN;this.textContent=isCN?'🌐 English':'🌐 中文';var b=document.getElementById('langBtn');if(b)b.textContent=isCN?'EN':'CN';localStorage.setItem('aihot_lang',isCN?'cn':'en');renderContent()">🌐 English</button>
+      <button type="button" id="mThemeBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="event.preventDefault();if(document.body.className.indexOf('light')>=0){document.body.className='';this.textContent='🌙 暗黑';localStorage.setItem('aihot_theme','dark')}else{document.body.className='light';this.textContent='☀️ 亮色';localStorage.setItem('aihot_theme','light')};return false">🌙 暗黑</button>
+      <button type="button" id="mLangBtn" style="background:var(--nav-bg);border:1px solid var(--nav-border);color:var(--nav-text);padding:6px 16px;border-radius:16px;cursor:pointer;font-size:13px;margin:0 6px" onclick="event.preventDefault();isCN=!isCN;this.textContent=isCN?'🌐 English':'🌐 中文';var b=document.getElementById('langBtn');if(b)b.textContent=isCN?'EN':'CN';localStorage.setItem('aihot_lang',isCN?'cn':'en');renderContent()">🌐 English</button>
     </div>
     <div style="text-align:center;padding:40px;color:var(--text3);font-size:12px">AI 热榜 · 点击标题跳转原文 · 标签由 DeepSeek 生成</div>
   </main>
