@@ -207,6 +207,8 @@ function setTag(t) {
 
 function switchTab(tab) {
   currentTab = tab;
+  activeSource = null;
+  activeTag = null;
   document.querySelectorAll('.sidebar-tab,.mobile-tab').forEach(function(b){b.classList.remove('active')});
   var tabs = document.querySelectorAll('.sidebar-tab,.mobile-tab');
   tabs.forEach(function(b){ if(b.textContent.includes(tab==='hot'?'必读':tab==='all'?'全部':'推荐')) b.classList.add('active'); });
