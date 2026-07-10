@@ -17,7 +17,36 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a0f;--card:#14141f;--card-border:#1e1e32;--text:#e0e0e0;--text2:#999;--text3:#555;--nav-bg:#14141f;--nav-border:#2a2a4a;--nav-text:#888;--sidebar-bg:#0d0d14;--active:#6366f1}
-.light{--bg:#f5f5f7;--card:#ffffff;--card-border:#e5e5ea;--text:#1d1d1f;--text2:#666;--text3:#999;--nav-bg:#f0f0f2;--nav-border:#d1d1d6;--nav-text:#555;--sidebar-bg:#eeeef0;--active:#6366f1}body.light{background:#f5f5f7;color:#1d1d1f}.light .card{background:#fff;border-color:#e5e5ea}.light .card h3,.light .card h3 a{color:#1d1d1f}.light .card .summary,.light .card .tag{color:#666}.light .sidebar,.light .mobile-tabs{background:#eeeef0;border-color:#d1d1d6}.light .sidebar-tab,.light .mobile-tab,.light .nav button{color:#555}.light .sidebar-tab.active,.light .mobile-tab.active{color:#6366f1}.light .main-header .stats,.light .sidebar-logo .meta{color:#999}
+body.light{background:#f0f0f2!important;color:#1d1d1f!important}
+.light .layout{background:#f0f0f2}
+.light .sidebar{background:#e8e8ec!important;border-color:#d1d1d6!important}
+.light .sidebar-logo{border-color:#d1d1d6}
+.light .sidebar-logo h1{color:#1d1d1f}
+.light .sidebar-logo .meta{color:#888}
+.light .sidebar-tab{color:#555!important}
+.light .sidebar-tab:hover{background:#ddd}
+.light .sidebar-tab.active{background:#6366f122!important;color:#6366f1!important}
+.light .sidebar-bottom{border-color:#d1d1d6}
+.light .sidebar-bottom button{background:#e8e8ec;border-color:#d1d1d6;color:#555}
+.light .sidebar-bottom button:hover{background:#6366f122;border-color:#6366f1}
+.light .main-header h2{color:#1d1d1f}
+.light .main-header .stats{color:#888}
+.light .card{background:#fff!important;border-color:#ddd!important;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+.light .card .source{color:#6366f1}
+.light .card h3,.light .card h3 a{color:#1d1d1f!important}
+.light .card .summary{color:#666}
+.light .card .tag{background:#eee;color:#888}
+.light .card .source .badge{background:#6366f112}
+.light .tag-filter .tf-tag{background:#eee;border-color:#ddd;color:#666}
+.light .tag-filter .tf-tag.active,.light .tag-filter .tf-tag:hover{background:#6366f122;border-color:#6366f1;color:#6366f1}
+.light .mobile-tabs{background:#e8e8ec!important;border-color:#d1d1d6!important}
+.light .mobile-tab{color:#888!important}
+.light .mobile-tab.active{color:#6366f1!important}
+.light .mobile-utils{border-color:#ddd}
+.light .mobile-utils button,.light .mobile-utils span{background:#e8e8ec;border-color:#d1d1d6;color:#555}
+.light .preference-bar{background:#fff;border-color:#ddd;color:#666}
+.light .stats{color:#888}
+.light .footer,.light footer{color:#aaa}
 body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;transition:none}
 .layout{display:flex;min-height:100vh}
 .sidebar{width:200px;background:var(--sidebar-bg);border-right:1px solid var(--card-border);padding:16px 0;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:20;overflow-y:auto}
